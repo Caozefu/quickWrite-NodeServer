@@ -1,0 +1,24 @@
+{
+  "name": "quickwrite-nodeserver",
+  "version": "1.0.0",
+  "description": "node-server for quickWrite",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Caozefu/quickWrite-NodeServer.git"
+  },
+  "author": "caozefu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Caozefu/quickWrite-NodeServer/issues"
+  },
+  "homepage": "https://github.com/Caozefu/quickWrite-NodeServer#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
