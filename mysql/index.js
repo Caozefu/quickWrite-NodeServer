@@ -1,6 +1,8 @@
 const mysql = require('mysql');
+const utils = require('../utils/index')
 const connection = mysql.createConnection({
     host: '35.240.140.11',
+    // host: 'localhost',
     user: 'root',
     password: 'CAOzefu1997',
     port: '3306',
@@ -28,7 +30,8 @@ const save = function (data) {
 
 const search = function (timestamp, callback) {
     if (timestamp) {
-        searchSQL.search(timestamp, connection, callback);
+        const date = utils.formatDate(timestamp);
+        searchSQL.search(date, connection, callback);
     }
 }
 
