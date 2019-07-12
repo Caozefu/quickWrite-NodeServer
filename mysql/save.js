@@ -1,7 +1,7 @@
 let completeFlag = true;
 const utils = require('../utils/index');
 const save = function(data, connection, callback) {
-    const date = utils.formatDate(data.date);
+    const date = new Date(data.date);
     // //add Info
     const addInfoSql = 'INSERT INTO countInfo(id, date, inCount, outCount) VALUES (0,?,?,?)';
     const addInfoParams = [date, data.inCount, data.outCount];
