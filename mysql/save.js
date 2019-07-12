@@ -1,9 +1,10 @@
 let completeFlag = true;
+const utils = require('../utils/index');
 const save = function(data, connection, callback) {
-    const date = new Date(data.date);
+    const date = utils.formatDate(data.date);
     // //add Info
     const addInfoSql = 'INSERT INTO countInfo(id, date, inCount, outCount) VALUES (0,?,?,?)';
-    const addInfoParams = [new Date(data.date), data.inCount, data.outCount];
+    const addInfoParams = [date, data.inCount, data.outCount];
     
     connection.query(addInfoSql, addInfoParams, function (err, result) {
         if (err) {
@@ -16,7 +17,7 @@ const save = function(data, connection, callback) {
 
     // addInCountDetail
     const addInCountDetailSql = 'INSERT INTO inCountDetail(id, alipay, count, eleme, meituan, wx, date) VALUES (0,?,?,?,?,?,?)';
-    const addInCountDetailParams = [data.inCountList.wx, data.inCountList.alipay, data.inCountList.count, data.inCountList.meituan, data.inCountList.eleme, new Date(data.date)];
+    const addInCountDetailParams = [data.inCountList.wx, data.inCountList.alipay, data.inCountList.count, data.inCountList.meituan, data.inCountList.eleme, date];
 
     connection.query(addInCountDetailSql, addInCountDetailParams, function (err, result) {
         if (err) {
