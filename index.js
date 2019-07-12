@@ -8,7 +8,7 @@ const router = require('./modules/index');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/', router);
+app.use('/api', router);
 
 app.listen('8089', (err) => {
     if (err) {
