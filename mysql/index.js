@@ -21,7 +21,7 @@ const getTotalList = require('./getTotalList');
 connection.connect();
 
 const save = function (data, callback) {
-    const currentDate = utils.formatDate(data.date);
+    const currentDate = data.date;
     shouldUpdate(currentDate, connection, (res) => {
         if (res) {
             updateSQL.update(data, currentDate, connection, callback);

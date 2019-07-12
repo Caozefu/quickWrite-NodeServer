@@ -1,5 +1,6 @@
 let completeFlag = true;
 const search = function(date, connection, callback) {
+    console.log(date);
     // search by date
     const searchSql1 = `SELECT * from countInfo WHERE date = '${date}';`;
     const searchSql2 = `SELECT * from inCountDetail WHERE date = '${date}';`;
