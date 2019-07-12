@@ -1,5 +1,5 @@
 let completeFlag = true;
-const save = function(data, connection) {
+const save = function(data, connection, callback) {
     const date = new Date(data.date);
     // //add Info
     const addInfoSql = 'INSERT INTO countInfo(id, date, inCount, outCount) VALUES (0,?,?,?)';
@@ -47,7 +47,7 @@ const save = function(data, connection) {
         console.log('INSERT OutCountList Success');
     });
 
-    return completeFlag;
+    callback(completeFlag);
 }
 
 exports.save = save;

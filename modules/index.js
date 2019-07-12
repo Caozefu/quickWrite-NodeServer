@@ -7,11 +7,14 @@ router.post('/save', (req, res) => {
     const currentSuccessRes = require('../resTemplate/success');
     res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
     if (req.body.date) {
-        if (!mysql.save(req.body)) {
-            errRes.message = '数据保存失败';
-            res.end(JSON.stringify(errRes));
-        }
-        res.end(JSON.stringify(currentSuccessRes));
+        mysql.save(req.body, (saveRes) => {
+            if (saveRes) {
+                res.end(JSON.stringify(currentSuccessRes));
+            } else {
+                errRes.message = '数据保存失败';
+                res.end(JSON.stringify(errRes));
+            }
+        })
     } else {
         errRes.message = '日期不能为空';
         res.end(JSON.stringify(errRes));
@@ -39,6 +42,15 @@ router.get('/getCurrentInfo', (req, res) => {
             // console.log(data[2][0]);
             res.end(JSON.stringify(currentSuccessRes));
         }
+    });
+});
+
+router.get('/getTotalItems', (req, res) => {
+    const currentSuccessRes = require('../resTemplate/success');
+    res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
+    mysql.getTotal((SQLres) => {
+        currentSuccessRes.data = SQLres;
+        res.end(JSON.stringify(currentSuccessRes));
     });
 });
 
