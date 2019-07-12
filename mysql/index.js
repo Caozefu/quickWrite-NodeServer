@@ -1,8 +1,8 @@
 const mysql = require('mysql');
 const utils = require('../utils/index')
 const connection = mysql.createConnection({
-    // host: '35.240.140.11',
-    host: 'localhost',
+    host: '35.240.140.11',
+    // host: 'localhost',
     user: 'root',
     password: 'CAOzefu1997',
     port: '3306',
