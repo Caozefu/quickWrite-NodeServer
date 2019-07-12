@@ -22,7 +22,7 @@ router.post('/save', (req, res) => {
 });
 
 router.get('/getCurrentInfo', (req, res) => {
-    const timestamp = Number(req.query.timestamp);
+    const timestamp = req.query.timestamp;
     const currentSuccessRes = require('../resTemplate/success');
     res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
     if (!timestamp) {

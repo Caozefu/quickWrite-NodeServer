@@ -33,8 +33,8 @@ const save = function (data, callback) {
 
 const search = function (timestamp, callback) {
     if (timestamp) {
-        const date = utils.formatDate(timestamp);
-        searchSQL.search(date, connection, callback);
+        // const date = utils.formatDate(timestamp);
+        searchSQL.search(timestamp, connection, callback);
     }
 }
 
