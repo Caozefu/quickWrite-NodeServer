@@ -15,8 +15,8 @@ const save = function(data, connection, callback) {
     });
 
     // addInCountDetail
-    const addInCountDetailSql = 'INSERT INTO inCountDetail(id, alipay, count, eleme, meituan, wx, date) VALUES (0,?,?,?,?,?,?)';
-    const addInCountDetailParams = [data.inCountList.wx, data.inCountList.alipay, data.inCountList.count, data.inCountList.meituan, data.inCountList.eleme, date];
+    const addInCountDetailSql = 'INSERT INTO inCountDetail(id, wx, alipay, count, meituan, eleme, date) VALUES (0,?,?,?,?,?,?)';
+    const addInCountDetailParams = [data.inCountList.wx || 0, data.inCountList.alipay || 0, data.inCountList.count || 0, data.inCountList.meituan || 0, data.inCountList.eleme || 0, date];
 
     connection.query(addInCountDetailSql, addInCountDetailParams, function (err, result) {
         if (err) {

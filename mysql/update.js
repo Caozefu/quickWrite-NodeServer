@@ -1,7 +1,7 @@
 const update = function(data, date, connection, callback) {
     // //add Info
-    const updateCountInfo = `UPDATE countInfo SET inCount = ${data.inCount}, outCount = ${data.outCount} WHERE date = '${date}';`;
-    const updateInCountDetail = `UPDATE inCountDetail SET alipay = ${data.inCountList.alipay}, count = ${data.inCountList.count}, wx = ${data.inCountList.wx}, eleme = ${data.inCountList.eleme}, meituan = ${data.inCountList.meituan} WHERE date = '${date}';`;
+    const updateCountInfo = `UPDATE countInfo SET inCount = ${data.inCount || 0}, outCount = ${data.outCount || 0} WHERE date = '${date}';`;
+    const updateInCountDetail = `UPDATE inCountDetail SET alipay = ${data.inCountList.alipay || 0}, count = ${data.inCountList.count || 0}, wx = ${data.inCountList.wx || 0}, eleme = ${data.inCountList.eleme || 0}, meituan = ${data.inCountList.meituan || 0} WHERE date = '${date}';`;
     const deleteOutCounts = `DELETE from outCountList WHERE createdDate = '${date}'`;
     
     const addOutCountDetailSql = 'INSERT INTO outCountList(id, name, outCount, createdDate) VALUES ?';
