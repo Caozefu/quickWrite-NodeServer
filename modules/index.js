@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('../mysql/index')
+const utils = require('../utils/index')
 let errRes = require('../resTemplate/error');
 
 router.post('/save', (req, res) => {
@@ -49,7 +50,11 @@ router.get('/getTotalItems', (req, res) => {
     const currentSuccessRes = require('../resTemplate/success');
     res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
     mysql.getTotal((SQLres) => {
-        currentSuccessRes.data = SQLres;
+        if (req.query.sortType && req.query.sortKey) {
+            currentSuccessRes.data = utils.sort(SQLres, req.query.sortKey, parseInt(req.query.sortType));
+        } else {
+            currentSuccessRes.data = utils.sort(SQLres, 'date', 1);
+        }
         res.end(JSON.stringify(currentSuccessRes));
     });
 });

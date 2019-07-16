@@ -69,6 +69,7 @@ const getTotal = function (callback) {
 
             totalData.push(dataItemTemp);
         })
+        // callback(utils.sort(totalData, 'date', 0));
         callback(totalData);
     });
 }
