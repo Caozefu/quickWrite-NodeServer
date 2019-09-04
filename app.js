@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
-const router = require('./modules/index');
+const router = require('./router');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,5 +14,5 @@ app.listen('8089', (err) => {
         console.log(err);
         return;
     }
-    console.log('start server...')
-})
+    console.log('start server at 8089')
+});

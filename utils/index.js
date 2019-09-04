@@ -37,5 +37,7 @@ function sort(arr, attr, type) {
     return res;
 }
 
-exports.formatDate = formatDate;
-exports.sort = sort;
+module.exports = {
+    formatDate,
+    sort
+};
