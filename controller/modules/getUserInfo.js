@@ -14,6 +14,9 @@ module.exports = async (req, res) => {
     await getUserInfoModel(data.data.user_uid).then(data => {
         if (data.length) {
             delete data[0].password;
+            if (!data[0].nickname) {
+                data[0].nickname = '用户000' + data[0].user_uid;
+            }
             res.end(resJson.returnSuccess(data[0]));
         } else {
             res.end(resJson.returnError(500, '未找到用户信息'));

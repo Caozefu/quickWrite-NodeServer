@@ -1,5 +1,5 @@
 exports.returnSuccess = (data, msg) => {
-    const success = require('../static/resTemplate/success');
+    const success = require('../resTemplate/success');
     if (data) {
         success.message = msg || '成功';
         success.data = data;
@@ -9,7 +9,7 @@ exports.returnSuccess = (data, msg) => {
 };
 
 exports.returnError = (code, msg) => {
-    const error = require('../static/resTemplate/error');
+    const error = require('../resTemplate/error');
     if (code) error.code = code;
     if (msg) error.message = msg;
     delete require.cache[require.resolve('../resTemplate/error')];

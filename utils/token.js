@@ -15,6 +15,6 @@ exports.getToken = (data) => {
 exports.verifyToken = (token) => {
     if (!token) return;
     const cert = fs.readFileSync(path.join(__dirname, '../libs/rsa_public_key.pem'));
-    const data = jwt.verify(token, cert, {algorithms: ['RS256']});
+    const data = jwt.verify(token, cert, { algorithms: ['RS256'] });
     return data || {};
 };
